@@ -19,3 +19,7 @@ Children and parents(younger users) to track their reading and rate books. They 
 
 ## Features to exclude
 
+## Github and Netlify
+
+1. https://github.com/kimberly-brisby/Capstone-level-3.git
+2. https://capstone-level-3.netlify.app/
