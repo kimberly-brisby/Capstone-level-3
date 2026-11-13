@@ -1,8 +1,7 @@
-# Your App's Name
+# Magical Reading Journal
 
 ## The problem
-A [who] needs [what] because [why]. My app will [the smallest thing that solves
-it].
+A reader and/or their parent guide to an engaging, simple place to log books, rate books summarize stories, and find age-appropriate reading material. It turns the traditional reading logs that feel like chores and kids often forget what they liked about past books. My app will let visitors view their magical bookshelf, log new books with ratings and summaries, take a reading level quiz, and receive tailored book suggestions.
 
 ## Persona
 - Name and situation:
@@ -22,13 +21,16 @@ it].
 - Another feature, and why it waits.
 
 ## The table
-Table: `tools`
+Table: `books`
 
 | Column | Type | Example value |
 | --- | --- | --- |
-| `tool_name` | `text` | Cordless drill |
-| `borrower` | `text` | Ana |
-| `days_out` | `int4` | 3 |
+| `title` | `text` | The Hobbit |
+| `author` | `text` | J.R.R. Tolkien |
+| `status` | `text` | Finished |
+| `level` | `text` | Enchanted Explorer |
+| `rating` | `int4` | 5 |
+| `notes` | `text` | Bilbo goes on an unexpected adventure with dwarves and finds a magic ring. |
 
 `id` and `created_at` are made for you.
 
@@ -58,8 +60,8 @@ Table: `tools`
 ## AI use
 
 ## Links
-- Live: https://YOUR-SITE.netlify.app
-- Repo: https://github.com/YOUR-USERNAME/YOUR-REPO
+- Live: https://capstone-level-3.netlify.app/
+- Repo: https://github.com/kimberly-brisby/Capstone-level-3
 
 ## Team
 Pod: @handle, @handle, @handle
