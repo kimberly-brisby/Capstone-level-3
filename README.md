@@ -1,25 +1,66 @@
-# Magical Reading Journal
+# Your App's Name
 
-This app will be an educational reading journal to track, suggest, summarize, and rate book for children.
+## The problem
+A [who] needs [what] because [why]. My app will [the smallest thing that solves
+it].
 
+## Persona
+- Name and situation:
+- Frustration:
+- Goal:
+- When they'd open the app:
 
-## Wireframe
+## Scope
 
-![wireframe](./wireframe.png)
+### In this version
+1. A visitor sees the list.
+2. A visitor adds a row.
+3. Your own line.
 
-## Target User
+### Left out, and why
+- A feature, and why it waits.
+- Another feature, and why it waits.
 
-Children and parents(younger users) to track their reading and rate books. They also will be able to summarize what they have read. 
+## The table
+Table: `tools`
 
-## Features to include
+| Column | Type | Example value |
+| --- | --- | --- |
+| `tool_name` | `text` | Cordless drill |
+| `borrower` | `text` | Ana |
+| `days_out` | `int4` | 3 |
 
-1. list of books
-2. form  to  add books
-3. form to add rating
+`id` and `created_at` are made for you.
 
-## Features to exclude
+## The plan
 
-## Github and Netlify
+### Sections
+- What a visitor sees, top to bottom.
 
-1. https://github.com/kimberly-brisby/Capstone-level-3.git
-2. https://capstone-level-3.netlify.app/
+![Wireframe](wireframe.png)
+
+## System
+- The visitor:
+- The app:
+- The visitor sees:
+- While loading:
+- If nothing matches:
+- If it fails:
+
+## Reflection: the plan
+
+## What changed
+
+## Reflection: feedback
+
+## Reflection
+
+## AI use
+
+## Links
+- Live: https://YOUR-SITE.netlify.app
+- Repo: https://github.com/YOUR-USERNAME/YOUR-REPO
+
+## Team
+Pod: @handle, @handle, @handle
+Pod plan: your pod's Google Doc link
