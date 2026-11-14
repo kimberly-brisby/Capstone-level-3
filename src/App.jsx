@@ -6,6 +6,7 @@ import './App.css'
 
 function App() {
   const [books, setBooks] = useState([])
+  const [filterStatus, setFilterStatus] = useState("All")
 
   async function handleListBook(){
     const  {data, error } = await supabase.from("books").select()
@@ -14,12 +15,36 @@ function App() {
     if(data){
     setBooks(data)
     }
-  }  
+  } 
+  
+  const filteredBooks = books.filter((book) => {
+    if(filterStatus === "All") return true
+    return book.status === filterStatus
+  })
   return (
     <>
       <h1>My Magical Reading Journal</h1>
-      <p>You have {books.length} books to choose from.</p>
-      <button onClick={handleListBook}>Click Here</button>
+      <div>
+        {filteredBooks.map((book) => (
+          <article key={book.id}>
+            <header>
+              {book.title} by {book.author}
+            </header>
+            <p>Status: {book.status} | Rating: {book.rating} / 5</p>
+          </article>
+        )
+        )}
+      </div>
+      <div>
+        <select value={filterStatus} onChange={(event) => setFilterStatus(event.target.value)}>
+          <option value={"All"}>All Books</option>  
+          <option value={"Want to Read"}>Want to Read</option>
+          <option value={"Reading"}>Reading</option>
+          <option value={"Finished"}>Finished</option>
+        </select>        
+        <p>You have {books.length} books to choose from.</p>
+        <button onClick={handleListBook}>Click Here</button>
+      </div>
     </>
   )
 }
