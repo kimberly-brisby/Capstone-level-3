@@ -30,7 +30,7 @@ function App() {
             <header>
               {book.title} by {book.author}
             </header>
-            <p>Status: {book.status} | Rating: {book.rating} / 5</p>
+          
           </article>
         )
         )}
