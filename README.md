@@ -64,5 +64,5 @@ Table: `books`
 - Repo: https://github.com/kimberly-brisby/Capstone-level-3
 
 ## Team
-Pod: @handle, @handle, @handle
-Pod plan: your pod's Google Doc link
+Pod: 
+Pod plan: https://1drv.ms/w/c/db29e00c5d8dfbee/IQBCztJ1uTDpTphgArbKrBM6AcbFp2xAHGbcBmONEmMFMLw?e=B6L3lS&nav=eyJoIjoiMTE4MjI2MzAyMiJ9
