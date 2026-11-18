@@ -9,10 +9,74 @@ function Bookform ( { onAddBook }){
     const [saving, setSaving] = useState('false')
     
 
-    const handleSubmit(event) {
+    const handleSubmit(event){
         event.preventDefault()
-        
+        if(title === "")
+            return 
+        setSaving(true)
+        const success = await onsubmit({
+            title,
+            author: author || 'unknown Author', 
+            status,
+            rating,
+            summary
+        })
+
+        if (success){
+            setTitle('')
+            setAuthor('')
+            setStatus('Want to Read')
+            setRating(5)
+            setSummary('')
+        }
+        setSaving(false)
     }
+
+    return(
+        <article>
+            <h3>Add a New Book</h3>
+            <form onSubmit={handleSubmit}>
+                <label>
+                    Book Title
+                    <input type="text" value={title} onChange={(event) => setTitle(event.target.value)} 
+                    required
+                    />
+                </label>
+
+                <label>
+                    Author
+                    <input type="text" value={author} onChange={(event) => setAuthor(event.target.value)} 
+                    />
+                </label>
+
+                <div className="grid">
+                <label>
+                    Status
+                    <select value={status} onChange={(event) => setStatus(event.target.value)}>
+                        <option value="Want to Read">Want to Read</option>
+                        <option value="Reading">Reading</option>
+                        <option value="Finished">Finished</option>
+                    </select>
+                </label>
+                
+                <div>
+                    <label>Rating</label>
+                    <StarRating rating={rating} onChange={setRating} />
+                </div>
+                </div>
+
+                <label>
+                    Summary Notes
+                    <textarea rows={3} value={summary} onChange={(event) => setSummary(event.target.value)}/>
+                </label>
+
+                <footer>
+                    <button type="button" className="secondary" onClick={onCancel}>Cancel</button>
+                    <button type="submit" aria-busy={saving}>{saving ? 'Saving...' : 'Save Book'}</button>
+                </footer>
+            </form>
+        </article>
+    )
 }
 
 export default  Bookform

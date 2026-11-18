@@ -7,6 +7,8 @@ import './App.css'
 function App() {
   const [books, setBooks] = useState([])
   const [filterStatus, setFilterStatus] = useState("All")
+  const [showForm, setShowForm] = useState(false)
+  const [ selectBookId, setSelectBookId] = useState(null)
 
   async function handleListBook(){
     const  {data, error } = await supabase.from("books").select()
@@ -15,16 +17,30 @@ function App() {
     if(data){
       setBooks(data)
     }
-  } 
+  }
   
+  async function handleAddBook(newBook) {
+    const bookWithId = {...newBook, id: Date.now()}
+    setBooks([...books, bookWithId])
+    setShowForm(false)
+    return(true)
+  }
+  
+  // filter
   const filteredBooks = books.filter((book) => {
     if(filterStatus === "All") return true
     return book.status === filterStatus
   })
+
+  // find
+  const selectedBook = books.find((book) => book.id === selectedBook)
   return (
-    <>
+    <main className='container'>
       <h1>My Magical Reading Journal</h1>
-      <div>
+
+      <div className='grid'>
+        <button onClick={() => setShowForm}>{showForm ? 'Hide Form' : '+ Add Book'}</button>
+
         {filteredBooks.map((book) => (
           <article key={book.id}>
             <header>
@@ -35,6 +51,7 @@ function App() {
         )
         )}
       </div>
+      
       <div>
         <select value={filterStatus} onChange={(event) => setFilterStatus(event.target.value)}>
           <option value={"All"}>All Books</option>  
@@ -45,7 +62,7 @@ function App() {
         <p>You have {books.length} books to choose from.</p>
         <button onClick={handleListBook}>Click Here</button>
       </div>
-    </>
+    </main>
   )
 }
 
