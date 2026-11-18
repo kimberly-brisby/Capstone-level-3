@@ -1,28 +1,28 @@
 import { useState } from "react"
+import StarRating from "./StarRating"
 
-function Bookform ( { onAddBook }){
+function Bookform({ onAddBook, onCancel }) {
     const [title, setTitle] = useState('')
     const [author, setAuthor] = useState('')
     const [status, setStatus] = useState('Want to Read')
     const [rating, setRating] = useState(5)
     const [summary, setSummary] = useState('')
-    const [saving, setSaving] = useState('false')
-    
+    const [saving, setSaving] = useState(false)
 
-    const handleSubmit(event){
+    async function handleSubmit(event) {
         event.preventDefault()
-        if(title === "")
-            return 
+        if (title === "")
+            return
         setSaving(true)
-        const success = await onsubmit({
+        const success = await onAddBook({
             title,
-            author: author || 'unknown Author', 
+            author: author || 'Unknown Author',
             status,
             rating,
             summary
         })
 
-        if (success){
+        if (success) {
             setTitle('')
             setAuthor('')
             setStatus('Want to Read')
@@ -32,51 +32,65 @@ function Bookform ( { onAddBook }){
         setSaving(false)
     }
 
-    return(
-        <article>
-            <h3>Add a New Book</h3>
+    return (
+        <article className="book-form-card">
+            <h3>✨ Add a New Book ✨</h3>
             <form onSubmit={handleSubmit}>
                 <label>
                     Book Title
-                    <input type="text" value={title} onChange={(event) => setTitle(event.target.value)} 
-                    required
+                    <input
+                        type="text"
+                        value={title}
+                        onChange={(event) => setTitle(event.target.value)}
+                        required
                     />
                 </label>
 
                 <label>
                     Author
-                    <input type="text" value={author} onChange={(event) => setAuthor(event.target.value)} 
+                    <input
+                        type="text"
+                        value={author}
+                        onChange={(event) => setAuthor(event.target.value)}
                     />
                 </label>
 
                 <div className="grid">
-                <label>
-                    Status
-                    <select value={status} onChange={(event) => setStatus(event.target.value)}>
-                        <option value="Want to Read">Want to Read</option>
-                        <option value="Reading">Reading</option>
-                        <option value="Finished">Finished</option>
-                    </select>
-                </label>
-                
-                <div>
-                    <label>Rating</label>
-                    <StarRating rating={rating} onChange={setRating} />
-                </div>
+                    <label>
+                        Status
+                        <select value={status} onChange={(event) => setStatus(event.target.value)}>
+                            <option value="Want to Read">Want to Read</option>
+                            <option value="Reading">Reading</option>
+                            <option value="Finished">Finished</option>
+                        </select>
+                    </label>
+
+                    <div>
+                        <label>Rating</label>
+                        <StarRating rating={rating} onChange={setRating} />
+                    </div>
                 </div>
 
                 <label>
                     Summary Notes
-                    <textarea rows={3} value={summary} onChange={(event) => setSummary(event.target.value)}/>
+                    <textarea
+                        rows={3}
+                        value={summary}
+                        onChange={(event) => setSummary(event.target.value)}
+                    />
                 </label>
 
                 <footer>
-                    <button type="button" className="secondary" onClick={onCancel}>Cancel</button>
-                    <button type="submit" aria-busy={saving}>{saving ? 'Saving...' : 'Save Book'}</button>
+                    <button type="button" className="cancel-btn" onClick={onCancel}>
+                        Cancel
+                    </button>
+                    <button type="submit" aria-busy={saving}>
+                        {saving ? 'Saving...' : 'Save Book'}
+                    </button>
                 </footer>
             </form>
         </article>
     )
 }
 
-export default  Bookform
+export default Bookform

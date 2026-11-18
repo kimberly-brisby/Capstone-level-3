@@ -14,7 +14,7 @@ A reader and/or their parent guide to an engaging, simple place to log books, ra
 ### In this version
 1. A visitor sees the list.
 2. A visitor adds a row.
-3. Your own line.
+3. A visitor can add summary and rating.
 
 ### Left out, and why
 - A feature, and why it waits.
@@ -30,7 +30,7 @@ Table: `books`
 | `status` | `text` | Finished |
 | `level` | `text` | Enchanted Explorer |
 | `rating` | `int4` | 5 |
-| `notes` | `text` | Bilbo goes on an unexpected adventure with dwarves and finds a magic ring. |
+| `summary` | `text` | Bilbo goes on an unexpected adventure with dwarves and finds a magic ring. |
 
 `id` and `created_at` are made for you.
 
@@ -58,6 +58,7 @@ Table: `books`
 ## Reflection
 
 ## AI use
+I asked for help on how to add the emoji for the star and magic globe and asked for the best colors that matches the pale turquoise background.  
 
 ## Links
 - Live: https://capstone-level-3.netlify.app/

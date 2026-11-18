@@ -1,3 +1,228 @@
-body{
-    background-color: paleturquoise;
+body {
+  background-color: paleturquoise;
+}
+
+h1 {
+  color: blueviolet;
+  font-family: fantasy;
+}
+
+p {
+  color: darkslateblue; /* Slightly darker so it is easier to read on paleturquoise */
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+/* Matching Magical Button Styles */
+button {
+  background-color: rgb(166, 239, 166);
+  color: darkgreen;
+  border: 2px solid mediumseagreen;
+  border-radius: 12px;
+  padding: 8px 16px;
+  font-family: fantasy;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+button:hover {
+  background-color: lemonchiffon;
+  border-color: gold;
+  color: darkgoldenrod;
+  transform: scale(1.05); /* Playful little pop when hovered */
+}
+
+/* Base Dropdown Styles */
+.status-select {
+  border-radius: 12px;
+  padding: 8px 12px;
+  font-family: fantasy;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+/* Automatic Dropdown Status Colors */
+.status-select.all {
+  background-color: lavender;
+  color: indigo;
+  border: 2px solid blueviolet;
+}
+
+.status-select.want-to-read {
+  background-color: mistyrose; /* Magical pink */
+  color: mediumvioletred;
+  border: 2px solid hotpink;
+}
+
+.status-select.reading {
+  background-color: lemonchiffon; /* Fairy-dust gold */
+  color: darkgoldenrod;
+  border: 2px solid orange;
+}
+
+.status-select.finished {
+  background-color: rgb(166, 239, 166); /* Matches your mint green buttons */
+  color: darkgreen;
+  border: 2px solid mediumseagreen;
+}
+
+/* Keeps the open dropdown list clean and readable */
+.status-select option {
+  background-color: white;
+  color: indigo;
+}
+
+/* Base Book Card Layout */
+.book-card {
+  background-color: white;
+  border-radius: 16px;
+  padding: 16px;
+  margin: 12px 0;
+  border: 3px solid lavender;
+  box-shadow: 0 4px 8px rgba(138, 43, 226, 0.15);
+  transition: transform 0.2s;
+}
+
+.book-card:hover {
+  transform: translateY(-3px); /* Gentle float effect when hovered */
+}
+
+/* Book Title & Author Styles inside BookList */
+.book-card header strong {
+  color: blueviolet;
+  font-family: fantasy;
+  font-size: 20px;
+}
+
+.book-card header > small {
+  display: block;
+  color: mediumpurple;
+  margin-top: 4px;
+}
+
+/* Status-Specific Card Borders */
+.book-card.want-to-read {
+  border-color: hotpink;
+}
+
+.book-card.reading {
+  border-color: orange;
+}
+
+.book-card.finished {
+  border-color: mediumseagreen;
+}
+
+/* Color-Coded Status Pills */
+.status-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-family: fantasy;
+  font-size: 13px;
+  margin-left: 8px;
+}
+
+.status-badge.want-to-read {
+  background-color: mistyrose;
+  color: mediumvioletred;
+  border: 1px solid hotpink;
+}
+
+.status-badge.reading {
+  background-color: lemonchiffon;
+  color: darkgoldenrod;
+  border: 1px solid orange;
+}
+
+.status-badge.finished {
+  background-color: rgb(166, 239, 166);
+  color: darkgreen;
+  border: 1px solid mediumseagreen;
+}
+/* Magical Star Rating Styles */
+.star-rating {
+  display: inline-flex;
+  gap: 4px;
+  margin: 6px 0;
+}
+
+.star-item {
+  color: thistle; /* Soft pastel purple for empty stars */
+  transition: transform 0.2s, color 0.2s, text-shadow 0.2s;
+  user-select: none;
+}
+
+.star-item.filled {
+  color: gold; /* Bright fairy-dust gold for rated stars */
+  text-shadow: 0 0 6px rgba(255, 165, 0, 0.6); /* Subtle magical glow */
+}
+
+.star-item.editable:hover {
+  transform: scale(1.25); /* Playful pop when picking a rating */
+  color: orange;
+}
+/* Magical Book Oracle Styles */
+.oracle-card {
+  background-color: lavender;
+  border: 3px dashed blueviolet;
+  border-radius: 16px;
+  padding: 18px;
+  margin: 16px 0;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(138, 43, 226, 0.2);
+}
+
+.oracle-card header strong {
+  color: blueviolet;
+  font-family: fantasy;
+  font-size: 22px;
+}
+
+.oracle-pick {
+  background-color: lemonchiffon;
+  border: 2px solid gold;
+  border-radius: 12px;
+  padding: 10px;
+  color: indigo;
+}
+
+/* Styles the button when there are 0 books on the shelf */
+button:disabled {
+  background-color: lightgray;
+  border-color: darkgray;
+  color: gray;
+  cursor: not-allowed;
+  transform: none;
+}
+/* Bookform Card Wrapper */
+.book-form-card {
+  background-color: white;
+  border: 3px solid blueviolet;
+  border-radius: 16px;
+  padding: 20px;
+  margin: 16px 0;
+  box-shadow: 0 4px 12px rgba(138, 43, 226, 0.2);
+}
+
+.book-form-card h3 {
+  color: blueviolet;
+  font-family: fantasy;
+  text-align: center;
+  margin-top: 0;
+}
+
+/* Soft Pink Cancel Button */
+.cancel-btn {
+  background-color: mistyrose;
+  color: mediumvioletred;
+  border: 2px solid hotpink;
+  margin-right: 10px;
+}
+
+.cancel-btn:hover {
+  background-color: pink;
+  border-color: deeppink;
+  color: darkmagenta;
 }
