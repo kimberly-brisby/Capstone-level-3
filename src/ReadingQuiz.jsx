@@ -93,10 +93,11 @@ function getRankDetails(totalScore) {
     if(totalScore <= 3) return { grade: 3, rank: "✨Spellbook Starter" }
     if(totalScore <= 5) return { grade: 5, rank: "🪄Junior Enchanter" }
     if(totalScore <= 7) return { grade: 7, rank: "🧪Arcane Seeker"}
-    if(totalScore <= 10) return { grade: 10, rank: "🧙🏽‍♂️Grand Archmage"}
+    return { grade: 10, rank: "🧙🏽‍♂️Grand Archmage" }
+
 }
 
-function ReadingQuiz({ onAddBook, onViewShelf }){
+function ReadingQuiz({ onAddBook, onBackToShelf }){
     const [step, setStep] = useState(0)
     const [answers, setAnswers] = useState({})
     const [matches, setMatches] = useState([])
@@ -106,10 +107,12 @@ function ReadingQuiz({ onAddBook, onViewShelf }){
     const [savedTitles, setSavedTitles] = useState([])
 
 async function handleSelectOption(questionId, option) {
-    const updateAnswers = {...setAnswers, [questionId]:option }
+    const updateAnswers = { ...answers, [questionId]: option }
+
     setAnswers(updateAnswers)
     if (step + 1 < Quiz_Questions.length) {
-        setStep(step)
+        setStep(step + 1)
+
     } else {
         await findMatchingBooks(updateAnswers)
     }
@@ -131,7 +134,7 @@ setEarnedRank(rank)
 
 const { data, error } = await supabase
 .from("books")
-.select("")
+.select("*")
 .lte("min_grade", grade)
 .gte("max_grade", grade)
 
@@ -161,22 +164,23 @@ setLoading(false)
 }
 
 async function handleSaveBook(book) {
-    const success = await onAddBook({
-        title: book.title,
-        author: book.author || "Unknown Author", 
-        status: "Want to Read", 
-        rating: 5,
-        summary: book.description || `Chosen for ${earnedRank}!,`
-    })
+const success = await onAddBook({
+    title: book.title,
+    author: book.author || "Unknown Author",
+    status: "Want to Read",
+    rating: null,
+    summary: "",
+})
     if (success) setSavedTitles([...savedTitles, book.title])
 }
+
 
 function resetQuiz() {
     setStep(0); setAnswers({}); setEarnedRank(""); setFinished(false); setSavedTitles([])
 }
 
-const currentQuestion = QUIZ_QUESTIONS[step]
-const progressPercent = finished ? 100 : Math.round(((step + 1) / QUIZ_QUESTIONS.length) * 100)
+const currentQuestion = Quiz_Questions[step]
+const progressPercent = finished ? 100 : Math.round(((step + 1) / Quiz_Questions.length) * 100)
 
 return(
     <article className="quiz-card">
@@ -224,7 +228,8 @@ return(
         )}
         <footer style={{ display: "flex", gap: "10px", flexWrap: "wrap"}}>
             <button type="button" className="secondary" onClick={resetQuiz}>Retake Quiz</button>
-            {onViewShelf && <button type="button" onClick={onViewShelf}>View My Self</button>}
+            {onBackToShelf && <button type="button" onClick={onBackToShelf}>View My Shelf</button>}
+
         </footer>
         </div>
     )}        
@@ -232,4 +237,4 @@ return(
     )
 }
 
-export default ReadingLevelQuiz
+export default ReadingQuiz

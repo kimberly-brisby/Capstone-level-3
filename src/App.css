@@ -7,6 +7,10 @@ h1 {
   font-family: fantasy;
 }
 
+h2{
+  color: rgb(151, 151, 242);
+}
+
 p {
   color: darkslateblue; /* Slightly darker so it is easier to read on paleturquoise */
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;

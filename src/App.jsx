@@ -79,6 +79,25 @@ function App() {
     )
   }
 
+  async function handleUpdateReview(id, rating, summary) {
+  const { error } = await supabase
+    .from("books")
+    .update({ rating, summary })
+    .eq("id", id)
+
+  if (error) {
+    console.error("Error updating review:", error)
+    return
+  }
+
+  setBooks(
+    books.map((book) =>
+      book.id === id ? { ...book, rating, summary } : book
+    )
+  )
+}
+
+
   // Clears the "shelf" table while keeping your "books" quiz library intact
   async function handleResetShelf() {
     if (!window.confirm("Reset your demo shelf? This clears your shelf but keeps your quiz library.")) return

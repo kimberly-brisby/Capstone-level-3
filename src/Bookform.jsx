@@ -18,8 +18,8 @@ function Bookform({ onAddBook, onCancel }) {
             title,
             author: author || 'Unknown Author',
             status,
-            rating,
-            summary
+            rating: status === 'Finished' ? rating : null,
+            summary: status === 'Finished' ? summary : ''
         })
 
         if (success) {
@@ -65,20 +65,24 @@ function Bookform({ onAddBook, onCancel }) {
                         </select>
                     </label>
 
-                    <div>
-                        <label>Rating</label>
-                        <StarRating rating={rating} onChange={setRating} />
-                    </div>
+                    {status === 'Finished' && (
+                        <div>
+                            <label>Rating</label>
+                            <StarRating rating={rating} onChange={setRating} />
+                        </div>
+                    )}
                 </div>
 
-                <label>
-                    Summary Notes
-                    <textarea
-                        rows={3}
-                        value={summary}
-                        onChange={(event) => setSummary(event.target.value)}
-                    />
-                </label>
+                {status === 'Finished' && (
+                    <label>
+                        Summary Notes
+                        <textarea
+                            rows={3}
+                            value={summary}
+                            onChange={(event) => setSummary(event.target.value)}
+                        />
+                    </label>
+                )}
 
                 <footer>
                     <button type="button" className="cancel-btn" onClick={onCancel}>
