@@ -51,7 +51,7 @@ function BookSuggestions({ books, readingLevel, onAddBook }) {
                     )}
                 </div>
             ) : (
-                <p>If you cannot pick, let the oracle choose from the shelf.</p>
+                <p>If you cannot pick, let the oracle choose from the library.</p>
             )}
 
             <button onClick={pickRandomBook} disabled={books.length === 0}>
